@@ -1,0 +1,7 @@
+{
+  "name": "orbinet1",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
