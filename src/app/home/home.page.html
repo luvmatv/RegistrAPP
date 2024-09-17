@@ -1,20 +1,13 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <ion-title #title>Bienvenido a Orbinet</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+<ion-content class="custom-background">
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <strong #welcomeText>¡Bienvenido a nuestra aplicación!</strong>
+    <p #description>Aplicación creada por: Aidan Soto, Lukas Rojas, Matías Hernández, Matías Maldonado y Tomás Vallejos.</p>
+    <ion-button #loginButton expand="full" class="custom-button" (click)="goToLogin()">Ingresar a la App</ion-button>
   </div>
 </ion-content>

@@ -1,0 +1,28 @@
+.custom-toolbar {
+    --background: #000000;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;  
+  }
+  
+  .custom-background {
+    background: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  
+    margin: 0;     
+  }
+  
+  #container {
+    text-align: center;
+    padding: 20px;
+    max-width: 600px;  
+    margin: 0 auto;    
+  }
+  
+  strong {
+    font-size: 24px;
+    color: #fff;       
+  }
+  
