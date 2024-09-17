@@ -8,7 +8,7 @@ import { NavController, AnimationController } from '@ionic/angular';
 })
 export class HomePage implements AfterViewInit {
 
-  // Referencias a los elementos para animar
+  // Referencias a los elementos para animar a
   @ViewChild('title', { read: ElementRef }) title!: ElementRef;
   @ViewChild('welcomeText', { read: ElementRef }) welcomeText!: ElementRef;
   @ViewChild('description', { read: ElementRef }) description!: ElementRef;
