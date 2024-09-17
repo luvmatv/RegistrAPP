@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { NavController, AnimationController } from '@ionic/angular';
-//PAGINAPRINCIPAL
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
