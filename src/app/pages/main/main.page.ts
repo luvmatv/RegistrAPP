@@ -36,7 +36,6 @@ export class MainPage implements OnInit, AfterViewInit {
     welcomeAnimation.play();
   }
 
-
   goToLogin() {
     this.navCtrl.navigateBack('/login');  
   }

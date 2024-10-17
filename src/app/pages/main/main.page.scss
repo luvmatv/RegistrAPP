@@ -11,20 +11,24 @@
   flex-direction: column; 
   justify-content: space-between; 
   align-items: center;
-  min-height: 90vh;  
-  margin: 0;
+  min-height: 90vh; 
+  margin: 0;     
 }
 
 #container {
   text-align: center;
   padding: 20px;
   max-width: 600px;  
-  margin: 0 auto;
+  margin: 0 auto;    
+  flex-grow: 1; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: flex-end; 
 }
 
 strong {
   font-size: 24px;
-  color: #fff;
+  color: #fff;       
 }
 
 .button-container {
@@ -36,5 +40,7 @@ strong {
 }
 
 ion-button {
-  width: 80%; 
+  width: 80%;  
+  background-color: #fff;
+  color: #000; 
 }
