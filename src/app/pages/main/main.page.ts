@@ -12,7 +12,11 @@ export class MainPage implements OnInit, AfterViewInit {
 
   @ViewChild('welcomeText', { read: ElementRef }) welcomeText!: ElementRef;
 
-  constructor(private authService: AuthService, private animationCtrl: AnimationController, private navCtrl: NavController) {} 
+  constructor(
+    private authService: AuthService, 
+    private animationCtrl: AnimationController,
+    private navCtrl: NavController  
+  ) {}
 
   ngOnInit() {
     this.userEmail = this.authService.getUserEmail();
@@ -33,6 +37,6 @@ export class MainPage implements OnInit, AfterViewInit {
   }
 
   goToLogin() {
-    this.navCtrl.navigateBack('/login'); 
+    this.navCtrl.navigateBack('/login');  
   }
 }
