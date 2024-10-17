@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { AnimationController } from '@ionic/angular';
+import { AnimationController, NavController } from '@ionic/angular'; 
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -10,10 +10,9 @@ import { AuthService } from '../../services/auth.service';
 export class MainPage implements OnInit, AfterViewInit {
   userEmail: string | null = '';
 
-  
   @ViewChild('welcomeText', { read: ElementRef }) welcomeText!: ElementRef;
 
-  constructor(private authService: AuthService, private animationCtrl: AnimationController) {}
+  constructor(private authService: AuthService, private animationCtrl: AnimationController, private navCtrl: NavController) {} 
 
   ngOnInit() {
     this.userEmail = this.authService.getUserEmail();
@@ -23,7 +22,6 @@ export class MainPage implements OnInit, AfterViewInit {
     this.animateWelcomeText();
   }
 
-  
   animateWelcomeText() {
     const welcomeAnimation = this.animationCtrl.create()
       .addElement(this.welcomeText.nativeElement)
@@ -32,5 +30,9 @@ export class MainPage implements OnInit, AfterViewInit {
       .fromTo('transform', 'translateY(-20px)', 'translateY(0px)');
 
     welcomeAnimation.play();
+  }
+
+  goToLogin() {
+    this.navCtrl.navigateBack('/login'); 
   }
 }
