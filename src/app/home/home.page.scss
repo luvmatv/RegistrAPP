@@ -1,16 +1,17 @@
 #container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Mantiene el contenido centrado verticalmente */
+  align-items: center; /* Mantiene el contenido centrado horizontalmente */
   height: 100vh; 
   text-align: center;
+  position: relative; /* Necesario para el posicionamiento absoluto de los elementos hijos */
 }
 
 #container strong {
   font-size: 24px;
   line-height: 32px;
-  color: #4e54c8;
+  color: black; /* Cambiado el color a negro */
   margin-bottom: 10px;
 }
 
@@ -24,7 +25,17 @@
 #container a {
   text-decoration: none;
   font-weight: bold;
-  color: #4e54c8;
+  color: #e7fc2f; /* Color de los enlaces */
+}
+
+/* Nueva clase para la información de los creadores */
+.creator-info {
+  position: absolute; /* Posicionamiento absoluto */
+  bottom: 10px; /* Distancia desde el fondo */
+  left: 20px; /* Distancia desde la izquierda */
+  font-size: 12px; /* Tamaño de fuente ajustado */
+  color: #666; /* Color opcional */
+  text-align: left; /* Alineación a la izquierda */
 }
 
 .custom-button {
@@ -37,13 +48,5 @@
 
 ion-header {
   --background: linear-gradient(45deg, #4e54c8, #8f94fb);
-  --color: #fff;
-}
-
-.custom-background {
-  --background: #000000;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  --color: #fff; /* Color del texto en el header */
 }

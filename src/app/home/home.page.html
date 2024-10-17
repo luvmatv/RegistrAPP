@@ -1,13 +1,15 @@
 <ion-header class="ion-no-border">
   <ion-toolbar class="custom-toolbar">
-    <ion-title #title>Bienvenido a Orbinet</ion-title>
+    <ion-title #title >RegistrAPP</ion-title> 
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content class="custom-background">
   <div id="container">
-    <strong #welcomeText>¡Bienvenido a nuestra aplicación!</strong>
-    <p #description>Aplicación creada por: Aidan Soto, Lukas Rojas, Matías Hernández, Matías Maldonado y Tomás Vallejos.</p>
+    <strong #welcomeText class="text-black">¡Bienvenido a RegistrAPP!</strong>
+    <p #description>Aplicación para registrar la asistencia de los alumnos a través de un código QR.</p>
     <ion-button #loginButton expand="full" class="custom-button" (click)="goToLogin()">Ingresar a la App</ion-button>
+    <p class="creator-info">Aplicación creada por: Aidan Soto, Lukas Rojas, Matías Hernández, Matías Maldonado y Tomás Vallejos.</p>
   </div>
 </ion-content>
