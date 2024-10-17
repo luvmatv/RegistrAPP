@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { AnimationController, NavController } from '@ionic/angular'; 
 import { AuthService } from '../../services/auth.service';
+import { StorageService } from '../../services/storage.service'; 
 
 @Component({
   selector: 'app-main',
@@ -9,17 +10,20 @@ import { AuthService } from '../../services/auth.service';
 })
 export class MainPage implements OnInit, AfterViewInit {
   userEmail: string | null = '';
+  userName: string | null = ''; 
 
   @ViewChild('welcomeText', { read: ElementRef }) welcomeText!: ElementRef;
 
   constructor(
     private authService: AuthService, 
     private animationCtrl: AnimationController,
-    private navCtrl: NavController  
+    private navCtrl: NavController,
+    private storageService: StorageService 
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.userEmail = this.authService.getUserEmail();
+    this.userName = await this.storageService.get('userName'); 
   }
 
   ngAfterViewInit() {

@@ -12,26 +12,21 @@ export class StorageService {
   }
 
   async init() {
-
     const storage = await this.storage.create();
     this._storage = storage;
   }
-
 
   public async set(key: string, value: any): Promise<void> {
     await this._storage?.set(key, value);
   }
 
-
   public async get(key: string): Promise<any> {
     return await this._storage?.get(key);
   }
 
-
   public async remove(key: string): Promise<void> {
     await this._storage?.remove(key);
   }
-
 
   public async clear(): Promise<void> {
     await this._storage?.clear();
