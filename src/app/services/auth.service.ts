@@ -1,22 +1,32 @@
 import { Injectable } from '@angular/core';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private userEmail!: string;
+  private userName: string | null = null;
+  private userEmail: string | null = null;
 
-  constructor() {}
+  constructor(private storageService: StorageService) {}
 
-  login(email: string, password: string): boolean {
-    if (email === 'admin' && password === '123') {
+  async login(email: string, password: string): Promise<boolean> {
+    const storedEmail = await this.storageService.get('userEmail');
+    const storedPassword = await this.storageService.get('userPassword');
+
+    if (email === storedEmail && password === storedPassword) {
       this.userEmail = email; 
+      this.userName = await this.storageService.get('userName');  
       return true;
     }
     return false;
   }
 
-  getUserEmail(): string {
+  getUserEmail(): string | null {
     return this.userEmail;  
-  }
+  }
+
+  getUserName(): string | null {
+    return this.userName;  
+  }
 }
