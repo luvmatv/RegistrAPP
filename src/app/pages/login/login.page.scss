@@ -1,57 +1,86 @@
 .custom-background {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; 
-    background-color: #000; 
-  }
-  
-  .login-container {
-    background: #1e1e1e; 
-    padding: 20px;
-    border-radius: 12px;
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-    color: #fff; 
-  }
-  
-  ion-item {
-    --background: transparent; 
-    --color: #fff; 
-    --placeholder-color: #a3a3a3; 
-    margin-bottom: 15px;
-  }
-  
-  ion-label {
-    color: #a3a3a3; 
-  }
-  
-  .error-message {
-    color: #e74c3c;
-    margin-bottom: 10px;
-    text-align: center;
-    font-size: 14px;
-  }
-  
-  .custom-button {
-    --background: #4e54c8; 
-    --background-hover: #6f73e6;
-    --color: #fff;
-    border-radius: 8px;
-    margin-top: 15px;
-  }
-  
-  .login-options {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-  }
-  
-  .custom-link {
-    --color: #4e54c8;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 14px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('/assets/images/duocuc.png'); /* Ruta correcta hacia la imagen */
+  background-size: cover; /* Para cubrir toda el área */
+  background-position: center; /* Centrar la imagen */
+  position: relative; /* Necesario para posicionar el formulario */
+}
+
+ion-content {
+  background-color: transparent; /* Asegúrate de que sea transparente */
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #ffffff; /* Fondo blanco sin transparencia */
+  border-radius: 12px;
+  position: absolute; /* Posiciona el formulario encima de la imagen */
+  z-index: 1; /* Asegúrate de que esté encima */
+}
+
+.custom-item {
+  --background: transparent;
+  --color: #000;
+  --placeholder-color: #a3a3a3;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.custom-label {
+  color: #000;
+}
+
+.custom-input {
+  color: #000;
+}
+
+.error-message {
+  color: #e74c3c;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.custom-button {
+  --background: #4e54c8;
+  --background-hover: #6f73e6;
+  --color: #fff;
+  border-radius: 8px;
+  margin-top: 15px;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.custom-button:hover {
+  transform: translateY(-2px);
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.custom-link {
+  --color: #4e54c8;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.custom-link:hover {
+  --color: #6f73e6;
+}
