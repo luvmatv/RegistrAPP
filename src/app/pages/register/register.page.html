@@ -1,11 +1,32 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="custom-toolbar">
     <ion-title>Registrar</ion-title>
   </ion-toolbar>
 </ion-header>
+<br>
+<br>
 
-<ion-content padding>
-  <form (ngSubmit)="onRegister()">
+<br>
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<ion-content class="custom-background">
+  <form (ngSubmit)="onRegister()" class="register-form">
     <ion-item>
       <ion-label position="floating">Nombre</ion-label>
       <ion-input [(ngModel)]="name" name="name" required></ion-input>
@@ -21,6 +42,6 @@
       <ion-input [(ngModel)]="password" name="password" required type="password"></ion-input>
     </ion-item>
 
-    <ion-button expand="full" type="submit">Registrar</ion-button>
+    <ion-button expand="full" type="submit" class="custom-button">Registrar</ion-button>
   </form>
 </ion-content>
