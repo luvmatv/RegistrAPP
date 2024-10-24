@@ -29,4 +29,9 @@ export class AuthService {
   getUserName(): string | null {
     return this.userName;  
   }
+
+  isLoggedIn(): boolean {
+    
+    return this.userEmail !== null; 
+  }
 }
