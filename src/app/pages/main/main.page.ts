@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { AnimationController, NavController } from '@ionic/angular'; 
+import { AnimationController, NavController, AlertController } from '@ionic/angular'; 
 import { AuthService } from '../../services/auth.service';
 import { StorageService } from '../../services/storage.service'; 
 
@@ -18,7 +18,8 @@ export class MainPage implements OnInit, AfterViewInit {
     private authService: AuthService, 
     private animationCtrl: AnimationController,
     private navCtrl: NavController,
-    private storageService: StorageService 
+    private storageService: StorageService,
+    private alertController: AlertController 
   ) {}
 
   async ngOnInit() {
@@ -40,7 +41,28 @@ export class MainPage implements OnInit, AfterViewInit {
     welcomeAnimation.play();
   }
 
-  goToLogin() {
-    this.navCtrl.navigateBack('/login');  
+  async goToLogin() {
+    const alert = await this.alertController.create({
+      header: 'Confirmar',
+      message: '¿Estás seguro de que deseas cerrar sesión?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Cancelado');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: () => {
+            this.navCtrl.navigateBack('/login');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }

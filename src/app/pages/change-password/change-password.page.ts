@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
-import { StorageService } from '../../services/storage.service'; 
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-change-password',
@@ -9,12 +9,12 @@ import { StorageService } from '../../services/storage.service';
 })
 export class ChangePasswordPage {
   email!: string;
-  newPassword!: string; 
+  newPassword!: string;
 
   constructor(
     private navCtrl: NavController,
     private alertController: AlertController,
-    private storageService: StorageService 
+    private storageService: StorageService
   ) {}
 
   async onRequestPasswordReset() {
@@ -22,13 +22,10 @@ export class ChangePasswordPage {
       console.log('Correo electrónico:', this.email);
       console.log('Nueva contraseña:', this.newPassword);
 
-      
       await this.storageService.set('userPassword', this.newPassword);
 
-      
       await this.showSuccessAlert();
 
-      
       this.navCtrl.navigateBack('/login');
     } else {
       this.showAlert('Campo requerido', 'Por favor, ingresa tu correo electrónico y la nueva contraseña.');
@@ -41,7 +38,7 @@ export class ChangePasswordPage {
 
   async showSuccessAlert() {
     const alert = await this.alertController.create({
-      header: 'Solicitud de Recuperación',
+      header: 'Solicitud de Cambiar Contraseña',
       message: 'Se ha actualizado tu contraseña exitosamente.',
       buttons: ['OK']
     });
