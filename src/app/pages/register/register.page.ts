@@ -22,4 +22,8 @@ export class RegisterPage {
     console.log('Usuario registrado:', this.name, this.email);
     this.navCtrl.navigateBack('/login');
   }
+
+  goToLogin() {
+    this.navCtrl.navigateBack('/login');
+  }
 }
