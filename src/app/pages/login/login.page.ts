@@ -1,7 +1,7 @@
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { NavController, AnimationController } from '@ionic/angular';
 import { AuthService } from '../../services/auth.service';
-import { StorageService } from '../../services/storage.service'; 
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +20,7 @@ export class LoginPage implements AfterViewInit {
     private navCtrl: NavController,
     private authService: AuthService,
     private animationCtrl: AnimationController,
-    private storageService: StorageService 
+    private storageService: StorageService
   ) {}
 
   ngAfterViewInit() {
@@ -45,12 +45,9 @@ export class LoginPage implements AfterViewInit {
   }
 
   async onSubmit() {
-    
-    const storedEmail = await this.storageService.get('userEmail');
-    const storedPassword = await this.storageService.get('userPassword');
+    const isLoginSuccessful = await this.authService.login(this.email, this.password);
 
-    
-    if (this.email === storedEmail && this.password === storedPassword) {
+    if (isLoginSuccessful) {
       this.errorMessage = '';
       this.navCtrl.navigateForward('/main'); 
     } else {
@@ -64,5 +61,10 @@ export class LoginPage implements AfterViewInit {
 
   changePassword() {
     this.navCtrl.navigateForward('/change-password'); 
+  }
+
+  
+  goToHome() {
+    this.navCtrl.navigateBack('/home');
   }
 }

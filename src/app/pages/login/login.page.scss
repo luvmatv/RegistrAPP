@@ -1,34 +1,35 @@
 .custom-background {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Centra horizontalmente el contenido */
+  align-items: flex-start; /* Cambiado para evitar centrar en vertical */
   height: 100vh;
-  background-image: url('/assets/images/duocuc.png'); /* Ruta correcta hacia la imagen */
-  background-size: cover; /* Para cubrir toda el área */
-  background-position: center; /* Centrar la imagen */
-  position: relative; /* Necesario para posicionar el formulario */
+  padding-top: 20px; /* Añadido un padding para separar el contenido de la parte superior */
+  background-image: url('/assets/images/duocuc.png'); 
+  background-size: cover; 
+  background-position: center; 
+  position: relative; 
 }
 
 ion-content {
-  background-color: transparent; /* Asegúrate de que sea transparente */
+  background-color: transparent; 
 }
 
 .center-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Cambiado para alinear en la parte superior */
   width: 100%;
-  height: 100%;
+  height: auto; /* Cambiado a auto para permitir que el contenido se ajuste */
 }
 
 .login-form {
   width: 100%;
   max-width: 400px;
   padding: 20px;
-  background-color: #ffffff; /* Fondo blanco sin transparencia */
+  background-color: #ffffff; 
   border-radius: 12px;
-  position: absolute; /* Posiciona el formulario encima de la imagen */
-  z-index: 1; /* Asegúrate de que esté encima */
+  position: relative;  
+  z-index: 1; 
 }
 
 .custom-item {
