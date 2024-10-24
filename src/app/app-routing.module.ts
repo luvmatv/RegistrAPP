@@ -30,6 +30,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]  
   },
   {
+    path: 'qr',  
+    loadChildren: () => import('./pages/qr/qr.module').then(m => m.QrPageModule),
+    canActivate: [AuthGuard] 
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/error404/error404.module').then(m => m.Error404PageModule)
   }

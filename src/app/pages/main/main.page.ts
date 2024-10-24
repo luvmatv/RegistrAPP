@@ -65,4 +65,8 @@ export class MainPage implements OnInit, AfterViewInit {
 
     await alert.present();
   }
+
+  goToQr() {
+    this.navCtrl.navigateForward('/qr'); 
+  }
 }
