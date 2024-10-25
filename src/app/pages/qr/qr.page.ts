@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, Platform } from '@ionic/angular'; // Inyecta Platform aquí
+import { ModalController, Platform, NavController } from '@ionic/angular';
 import { BarcodeScanningModalComponent } from './barcode-scanning-modal.component';
 import { LensFacing, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 
@@ -15,7 +15,8 @@ export class QrPage implements OnInit {
 
   constructor(
     private modalController: ModalController,
-    private platform: Platform 
+    private platform: Platform,
+    private navCtrl: NavController 
   ) {}
 
   ngOnInit(): void {
@@ -46,5 +47,9 @@ export class QrPage implements OnInit {
     if (data) {
       this.scanResult = data?.barcode?.displayValue || '';
     }
+  }
+
+  goBack() {
+    this.navCtrl.navigateBack('/main'); 
   }
 }
