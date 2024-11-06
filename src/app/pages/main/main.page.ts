@@ -69,4 +69,8 @@ export class MainPage implements OnInit, AfterViewInit {
   goToQr() {
     this.navCtrl.navigateForward('/qr'); 
   }
+
+  goToProfile() {
+    this.navCtrl.navigateForward('/perfil'); 
+  }
 }

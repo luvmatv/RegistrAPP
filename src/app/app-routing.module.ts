@@ -27,12 +27,17 @@ const routes: Routes = [
   {
     path: 'main',
     loadChildren: () => import('./pages/main/main.module').then(m => m.MainPageModule),
-    canActivate: [AuthGuard]  
+    canActivate: [AuthGuard]
   },
   {
-    path: 'qr',  
+    path: 'qr',
     loadChildren: () => import('./pages/qr/qr.module').then(m => m.QrPageModule),
-    canActivate: [AuthGuard] 
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then(m => m.PerfilPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
@@ -46,4 +51,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

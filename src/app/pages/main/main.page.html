@@ -1,12 +1,17 @@
 <ion-header class="ion-no-border">
   <ion-toolbar class="custom-toolbar">
     <ion-title>RegistrAPP</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToProfile()">
+        <ion-icon name="person-circle-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="custom-background">
   <div id="container">
-    <strong #welcomeText>¡Bienvenido, {{ userName }}!</strong> 
+    <strong #welcomeText>¡Bienvenido, {{ userName }}!</strong>
   </div>
 
   <div class="button-container">
