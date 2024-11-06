@@ -10,6 +10,7 @@ import { StorageService } from '../../services/storage.service';
 export class RegisterPage {
   name!: string;  
   email!: string;
+  rut!: string; 
   password!: string;
 
   constructor(private navCtrl: NavController, private storageService: StorageService) {}
@@ -17,9 +18,10 @@ export class RegisterPage {
   async onRegister() {
     await this.storageService.set('userName', this.name);  
     await this.storageService.set('userEmail', this.email);
+    await this.storageService.set('userRut', this.rut); 
     await this.storageService.set('userPassword', this.password);
     
-    console.log('Usuario registrado:', this.name, this.email);
+    console.log('Usuario registrado:', this.name, this.email, this.rut);
     this.navCtrl.navigateBack('/login');
   }
 
