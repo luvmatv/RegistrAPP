@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { StorageService } from '../../services/storage.service';
-
 
 @Component({
   selector: 'app-register',
@@ -13,29 +12,36 @@ export class RegisterPage {
   email!: string;
   rut!: string;
   password!: string;
-  selectedCareer: string = 'informatica'; // Inicializa con un valor por defecto
+  selectedCareer: string = 'informatica';
 
-
-  constructor(private navCtrl: NavController, private storageService: StorageService) {}
-
+  constructor(
+    private navCtrl: NavController, 
+    private storageService: StorageService,
+    private toastController: ToastController
+  ) {}
 
   async onRegister() {
-    // Guardar los datos del usuario en el almacenamiento
-    await this.storageService.set('userName', this.name);  
+    await this.storageService.set('userName', this.name);
     await this.storageService.set('userEmail', this.email);
     await this.storageService.set('userRut', this.rut);
     await this.storageService.set('userPassword', this.password);
-    await this.storageService.set('userCareer', this.selectedCareer); // Almacenar carrera seleccionada
+    await this.storageService.set('userCareer', this.selectedCareer);
 
 
-    console.log('Usuario registrado:', this.name, this.email, this.rut, this.selectedCareer);
-    this.navCtrl.navigateForward('/perfil', {
-      queryParams: {
-        career: this.selectedCareer
-      }
+    const toast = await this.toastController.create({
+      message: 'Registro exitoso',
+      duration: 2000,
+      position: 'top'
     });
-  }
+    await toast.present();
 
+
+    this.name = '';
+    this.email = '';
+    this.rut = '';
+    this.password = '';
+    this.selectedCareer = 'informatica';
+  }
 
   goToLogin() {
     this.navCtrl.navigateBack('/login');
