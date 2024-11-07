@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { StorageService } from '../../services/storage.service';
 import { Router } from '@angular/router';
+import { IpService } from '../../services/api.service';  
 
 @Component({
   selector: 'app-profile',
@@ -13,17 +14,26 @@ export class PerfilPage implements OnInit {
   userRut: string = '';
   userProfileImage: string | null = null;
   userInitial: string = '';
-
+  city: string | undefined; 
+  latitude: number | undefined;  
   @ViewChild('canvas') canvas!: ElementRef;
 
-  constructor(private storageService: StorageService, private router: Router) {}
+  constructor(
+    private storageService: StorageService,
+    private router: Router,
+    private ipService: IpService  
+  ) {}
 
   async ngOnInit() {
+
     this.userName = await this.storageService.get('userName');
     this.userEmail = await this.storageService.get('userEmail');
     this.userRut = await this.storageService.get('userRut');
     this.userInitial = this.userName.charAt(0).toUpperCase();
     this.generateProfileImage();
+
+
+    this.getIpInfo();
   }
 
   generateProfileImage() {
@@ -49,6 +59,20 @@ export class PerfilPage implements OnInit {
 
       this.userProfileImage = canvas.toDataURL();
     }
+  }
+
+  getIpInfo() {
+    this.ipService.getIpInfo().subscribe(
+      (data) => {
+        console.log(data);  
+        this.city = data.city;  
+        this.latitude = data.lat;  
+        console.log(`Ciudad: ${this.city}, Latitud: ${this.latitude}`);  
+      },
+      (error) => {
+        console.error('Error al obtener la información de la IP:', error);
+      }
+    );
   }
 
   goBack() {

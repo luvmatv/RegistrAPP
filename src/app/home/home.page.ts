@@ -1,6 +1,5 @@
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { NavController, AnimationController } from '@ionic/angular';
-import { IpService } from '../services/api.service';  
 
 @Component({
   selector: 'app-home',
@@ -14,15 +13,11 @@ export class HomePage implements AfterViewInit {
   @ViewChild('description', { read: ElementRef }) description!: ElementRef;
   @ViewChild('loginButton', { read: ElementRef }) loginButton!: ElementRef;
 
-  city: string | undefined;  
-  latitude: number | undefined;  
-
-  constructor(private navCtrl: NavController, private animationCtrl: AnimationController, private ipService: IpService) {}
+  constructor(private navCtrl: NavController, private animationCtrl: AnimationController) {}
 
   ngAfterViewInit() {
     console.log("ngAfterViewInit called");  
     this.animateElements();
-    this.getIpInfo();  
   }
 
   animateElements() {
@@ -57,20 +52,6 @@ export class HomePage implements AfterViewInit {
     welcomeAnimation.play();
     descriptionAnimation.play();
     buttonAnimation.play();
-  }
-
-  getIpInfo() {
-    this.ipService.getIpInfo().subscribe(
-      (data) => {
-        console.log(data);  
-        this.city = data.city;  
-        this.latitude = data.lat;  
-        console.log(`Ciudad: ${this.city}, Latitud: ${this.latitude}`);  
-      },
-      (error) => {
-        console.error('Error al obtener la información de la IP:', error);
-      }
-    );
   }
 
   goToLogin() {

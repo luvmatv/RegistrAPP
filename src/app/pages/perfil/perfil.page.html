@@ -28,4 +28,15 @@
     <ion-label position="stacked">RUT</ion-label>
     <ion-input [value]="userRut" readonly></ion-input>
   </ion-item>
+
+  <ion-item *ngIf="city">
+    <ion-label position="stacked">Ciudad</ion-label>
+    <ion-input [value]="city" readonly></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="latitude">
+    <ion-label position="stacked">Latitud</ion-label>
+    <ion-input [value]="latitude" readonly></ion-input>
+  </ion-item>
+
 </ion-content>
