@@ -13,7 +13,7 @@ export class PerfilPage implements OnInit {
   userName: string = '';
   userEmail: string = '';
   userRut: string = '';
-  userCareer: string = ''; // Agregar propiedad para la carrera del usuario
+  userCareer: string = ''; 
   userProfileImage: string | null = null;
   userInitial: string = '';
   city?: string;
@@ -40,7 +40,7 @@ export class PerfilPage implements OnInit {
       this.userName = await this.storageService.get('userName') || '';
       this.userEmail = await this.storageService.get('userEmail') || '';
       this.userRut = await this.storageService.get('userRut') || '';
-      this.userCareer = await this.storageService.get('userCareer') || ''; // Cargar carrera
+      this.userCareer = await this.storageService.get('userCareer') || ''; 
       this.userInitial = this.userName.charAt(0).toUpperCase();
     } catch (error) {
       console.error('Error al cargar los datos del usuario:', error);
