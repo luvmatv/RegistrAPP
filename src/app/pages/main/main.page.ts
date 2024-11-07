@@ -10,7 +10,8 @@ import { StorageService } from '../../services/storage.service';
 })
 export class MainPage implements OnInit, AfterViewInit {
   userEmail: string | null = '';
-  userName: string | null = ''; 
+  userName: string | null = '';
+  currentTime: string = ''; // Variable para la hora actual
 
   @ViewChild('welcomeText', { read: ElementRef }) welcomeText!: ElementRef;
 
@@ -25,10 +26,17 @@ export class MainPage implements OnInit, AfterViewInit {
   async ngOnInit() {
     this.userEmail = this.authService.getUserEmail();
     this.userName = await this.storageService.get('userName'); 
+    this.updateTime(); // Llama a la función para actualizar la hora al iniciar
+    setInterval(() => this.updateTime(), 1000); // Actualiza la hora cada segundo
   }
 
   ngAfterViewInit() {
     this.animateWelcomeText();
+  }
+
+  updateTime() {
+    const now = new Date();
+    this.currentTime = now.toLocaleTimeString(); // Formato de hora local
   }
 
   animateWelcomeText() {
