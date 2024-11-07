@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, Platform, NavController } from '@ionic/angular';
 import { BarcodeScanningModalComponent } from './barcode-scanning-modal.component';
 import { LensFacing, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
-import { StorageService } from '../../services/storage.service';  // Importa el StorageService
+import { StorageService } from '../../services/storage.service';  
 
 @Component({
   selector: 'app-qr',
@@ -11,18 +11,17 @@ import { StorageService } from '../../services/storage.service';  // Importa el 
 })
 export class QrPage implements OnInit {
   segment = 'generate';
-  qrText = ''; // El RUT se asignará aquí
+  qrText = '';
   scanResult = '';
 
   constructor(
     private modalController: ModalController,
     private platform: Platform,
     private navCtrl: NavController,
-    private storageService: StorageService // Inyecta el servicio
+    private storageService: StorageService 
   ) {}
 
   ngOnInit(): void {
-    // Recupera el RUT almacenado al cargar la página
     this.loadUserRut();
     
     if (this.platform.is('capacitor')) {
@@ -35,7 +34,6 @@ export class QrPage implements OnInit {
   }
 
   async loadUserRut() {
-    // Obtener el RUT del StorageService
     this.qrText = await this.storageService.get('userRut');
   }
 
