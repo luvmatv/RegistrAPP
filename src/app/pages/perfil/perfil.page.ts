@@ -3,6 +3,7 @@ import { StorageService } from '../../services/storage.service';
 import { Router } from '@angular/router';
 import { IpService } from '../../services/api.service';  
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './perfil.page.html',
@@ -12,11 +13,13 @@ export class PerfilPage implements OnInit {
   userName: string = '';
   userEmail: string = '';
   userRut: string = '';
+  userCareer: string = ''; // Agregar propiedad para la carrera del usuario
   userProfileImage: string | null = null;
   userInitial: string = '';
-  city: string | undefined; 
-  latitude: number | undefined;  
+  city?: string;
+  latitude?: number;  
   @ViewChild('canvas') canvas!: ElementRef;
+
 
   constructor(
     private storageService: StorageService,
@@ -24,47 +27,65 @@ export class PerfilPage implements OnInit {
     private ipService: IpService  
   ) {}
 
+
   async ngOnInit() {
-
-    this.userName = await this.storageService.get('userName');
-    this.userEmail = await this.storageService.get('userEmail');
-    this.userRut = await this.storageService.get('userRut');
-    this.userInitial = this.userName.charAt(0).toUpperCase();
+    await this.loadUserData();
     this.generateProfileImage();
-
-
     this.getIpInfo();
   }
 
-  generateProfileImage() {
-    const canvas = this.canvas.nativeElement;
-    const context = canvas.getContext('2d');
 
-    if (context) {
-      const size = 100;
-      const color = '#4CAF50';
-      const textColor = 'white';
-
-      canvas.width = size;
-      canvas.height = size;
-
-      context.fillStyle = color;
-      context.fillRect(0, 0, canvas.width, canvas.height);
-
-      context.fillStyle = textColor;
-      context.font = 'bold 50px Arial';
-      context.textAlign = 'center';
-      context.textBaseline = 'middle';
-      context.fillText(this.userInitial, size / 2, size / 2);
-
-      this.userProfileImage = canvas.toDataURL();
+  private async loadUserData() {
+    try {
+      this.userName = await this.storageService.get('userName') || '';
+      this.userEmail = await this.storageService.get('userEmail') || '';
+      this.userRut = await this.storageService.get('userRut') || '';
+      this.userCareer = await this.storageService.get('userCareer') || ''; // Cargar carrera
+      this.userInitial = this.userName.charAt(0).toUpperCase();
+    } catch (error) {
+      console.error('Error al cargar los datos del usuario:', error);
     }
   }
 
-  getIpInfo() {
+
+  private generateProfileImage() {
+    const canvas = this.canvas.nativeElement;
+    const context = canvas.getContext('2d');
+
+
+    if (!context) {
+      console.error('Error al obtener el contexto del canvas');
+      return;
+    }
+
+
+    const size = 100;
+    const color = '#4CAF50';
+    const textColor = 'white';
+
+
+    canvas.width = size;
+    canvas.height = size;
+
+
+    context.fillStyle = color;
+    context.fillRect(0, 0, size, size);
+
+
+    context.fillStyle = textColor;
+    context.font = 'bold 50px Arial';
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
+    context.fillText(this.userInitial, size / 2, size / 2);
+
+
+    this.userProfileImage = canvas.toDataURL();
+  }
+
+
+  private getIpInfo() {
     this.ipService.getIpInfo().subscribe(
       (data) => {
-        console.log(data);  
         this.city = data.city;  
         this.latitude = data.lat;  
         console.log(`Ciudad: ${this.city}, Latitud: ${this.latitude}`);  
@@ -75,7 +96,9 @@ export class PerfilPage implements OnInit {
     );
   }
 
+
   goBack() {
     this.router.navigate(['/main']);
   }
 }
+
