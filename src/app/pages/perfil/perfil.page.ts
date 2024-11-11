@@ -3,7 +3,6 @@ import { StorageService } from '../../services/storage.service';
 import { Router } from '@angular/router';
 import { IpService } from '../../services/api.service';  
 
-
 @Component({
   selector: 'app-profile',
   templateUrl: './perfil.page.html',
@@ -14,12 +13,12 @@ export class PerfilPage implements OnInit {
   userEmail: string = '';
   userRut: string = '';
   userCareer: string = ''; 
+  userRole: string = '';  
   userProfileImage: string | null = null;
   userInitial: string = '';
   city?: string;
   latitude?: number;  
   @ViewChild('canvas') canvas!: ElementRef;
-
 
   constructor(
     private storageService: StorageService,
@@ -27,13 +26,11 @@ export class PerfilPage implements OnInit {
     private ipService: IpService  
   ) {}
 
-
   async ngOnInit() {
     await this.loadUserData();
     this.generateProfileImage();
     this.getIpInfo();
   }
-
 
   private async loadUserData() {
     try {
@@ -41,36 +38,31 @@ export class PerfilPage implements OnInit {
       this.userEmail = await this.storageService.get('userEmail') || '';
       this.userRut = await this.storageService.get('userRut') || '';
       this.userCareer = await this.storageService.get('userCareer') || ''; 
+      this.userRole = await this.storageService.get('userRole') || '';  
       this.userInitial = this.userName.charAt(0).toUpperCase();
     } catch (error) {
       console.error('Error al cargar los datos del usuario:', error);
     }
   }
 
-
   private generateProfileImage() {
     const canvas = this.canvas.nativeElement;
     const context = canvas.getContext('2d');
-
 
     if (!context) {
       console.error('Error al obtener el contexto del canvas');
       return;
     }
 
-
     const size = 100;
     const color = '#4CAF50';
     const textColor = 'white';
 
-
     canvas.width = size;
     canvas.height = size;
 
-
     context.fillStyle = color;
     context.fillRect(0, 0, size, size);
-
 
     context.fillStyle = textColor;
     context.font = 'bold 50px Arial';
@@ -78,10 +70,8 @@ export class PerfilPage implements OnInit {
     context.textBaseline = 'middle';
     context.fillText(this.userInitial, size / 2, size / 2);
 
-
     this.userProfileImage = canvas.toDataURL();
   }
-
 
   private getIpInfo() {
     this.ipService.getIpInfo().subscribe(
@@ -96,9 +86,7 @@ export class PerfilPage implements OnInit {
     );
   }
 
-
   goBack() {
     this.router.navigate(['/main']);
   }
 }
-

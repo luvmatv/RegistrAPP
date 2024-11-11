@@ -9,48 +9,44 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content class="ion-padding">
   <div class="profile-picture">
     <canvas #canvas></canvas>
   </div>
-
 
   <ion-item>
     <ion-label position="stacked">Nombre</ion-label>
     <ion-input [value]="userName" readonly></ion-input>
   </ion-item>
 
-
   <ion-item>
     <ion-label position="stacked">Correo Electrónico</ion-label>
     <ion-input [value]="userEmail" readonly></ion-input>
   </ion-item>
-
 
   <ion-item>
     <ion-label position="stacked">RUT</ion-label>
     <ion-input [value]="userRut" readonly></ion-input>
   </ion-item>
 
-
   <ion-item *ngIf="city">
     <ion-label position="stacked">Ciudad</ion-label>
     <ion-input [value]="city" readonly></ion-input>
   </ion-item>
-
 
   <ion-item *ngIf="latitude">
     <ion-label position="stacked">Latitud</ion-label>
     <ion-input [value]="latitude" readonly></ion-input>
   </ion-item>
 
-
-
-
   <ion-item>
     <ion-label position="stacked">Tipo de Carrera</ion-label>
     <ion-input [value]="userCareer" readonly></ion-input>
   </ion-item>
-</ion-content>
 
+  
+  <ion-item>
+    <ion-label position="stacked">Ocupación</ion-label>
+    <ion-input [value]="userRole === 'profesor' ? 'Profesor' : 'Estudiante'" readonly></ion-input>
+  </ion-item>
+</ion-content>
