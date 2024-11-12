@@ -81,4 +81,9 @@ export class MainPage implements OnInit, AfterViewInit {
   goToProfile() {
     this.navCtrl.navigateForward('/perfil'); 
   }
+
+  goToHorario() {
+    this.navCtrl.navigateForward('/horario');
+  }
+
 }
