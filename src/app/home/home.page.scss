@@ -6,15 +6,20 @@
   height: 100vh; 
   text-align: center;
   position: relative; 
+  background-image: url('~src/assets/images/duocuc.png'); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
 }
 
 #container strong {
   font-size: 24px;
   line-height: 32px;
-  color: white;
+  color: 
+  -1px -1px 0 #fbfbfb;
   margin-bottom: 10px;
   text-shadow: 
-    -1px -1px 0 #000,  
+    -1px -1px 0 #000, 
      1px -1px 0 #000,
     -1px  1px 0 #000,
      1px  1px 0 #000;
@@ -23,14 +28,14 @@
 #container p {
   font-size: 16px;
   line-height: 22px;
-  color: #8c8c8c;
+  color: #eaf12af5; 
   margin: 0 0 20px 0;
 }
 
 #container a {
   text-decoration: none;
   font-weight: bold;
-  color: #e7fc2f;
+  color: #F1C40F; 
 }
 
 .creator-info {
@@ -43,14 +48,20 @@
 }
 
 .custom-button {
-  --background: #4e54c8;
-  --background-hover: #6f73e6;
-  --color: #fff;
+  --background: #1B2E4B; 
+  --background-hover: #F1C40F; 
+  --color: #F1C40F;
   border-radius: 8px;
   margin-top: 20px;
 }
 
 ion-header {
-  --background: linear-gradient(45deg, #4e54c8, #8f94fb);
-  --color: #fff; 
+  --background: linear-gradient(45deg, #1B2E4B, #F1C40F); 
+  --color: #F1C40F; 
+}
+
+
+#logo {
+  width: 250px; 
+  margin-bottom: 05px; 
 }
