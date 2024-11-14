@@ -6,7 +6,8 @@
 }
 
 .custom-background {
-  background: linear-gradient(to bottom, #000000, #434343);
+  background: url('~src/assets/images/duocuc1.png'); // Agrega la imagen de fondo
+  background-size: cover; // Ajusta la imagen para cubrir toda la pantalla
   display: flex;
   flex-direction: column; 
   justify-content: space-between; 
@@ -43,9 +44,13 @@ strong {
   padding: 15px; 
   border-radius: 10px; 
   font-size: 18px; 
+  background-color: #004f9f; // Azul institucional
+  color: #fff; // Texto blanco para contraste
+  border: none; // Eliminar borde
   transition: background-color 0.3s, transform 0.3s; 
 }
 
 .custom-button:hover {
+  background-color: darken(#004f9f, 10%); // Oscurece el azul al pasar el mouse
   transform: scale(1.05); 
 }

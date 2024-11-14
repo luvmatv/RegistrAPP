@@ -30,6 +30,14 @@ ion-content {
   border-radius: 12px;
   position: relative;  
   z-index: 1; 
+  &::before {
+    content: url('~src/assets/images/logo1.png');
+    position: absolute;
+    top: -20px; /* Ajusta según sea necesario */
+    right: -20px; /* Ajusta según sea necesario */
+    width: 80px; /* Ajusta el tamaño del logo */
+    height: auto;
+  }
 }
 
 .custom-item {
