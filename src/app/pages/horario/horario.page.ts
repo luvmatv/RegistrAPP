@@ -11,7 +11,6 @@ export class HorarioPage implements OnInit {
   schedule: any[] = []; 
   careerName: string = '';
 
-  // Datos de las asignaturas (ejemplo)
   subjectNames: { [key: string]: string } = {
     PGY4121: 'Programación Móvil',
     INF3123: 'Estructuras de Datos',
