@@ -15,29 +15,29 @@
 #container strong {
   font-size: 24px;
   line-height: 32px;
-  color: #FFFFFF; /* Cambia el color a blanco para más contraste */
+  color: #FFFFFF; 
   margin-bottom: 10px;
   text-shadow: 
     -1px -1px 0 #000, 
      1px -1px 0 #000,
     -1px  1px 0 #000,
      1px  1px 0 #000;
-  border: 2px solid #F1C40F; /* Añade un borde de color amarillo */
-  padding: 5px 10px; /* Añade algo de padding para que el borde se vea mejor */
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para mejor visibilidad */
-  border-radius: 5px; /* Opcional: hace que los bordes sean redondeados */
+  border: 2px solid #F1C40F; 
+  padding: 5px 10px; 
+  background-color: rgba(0, 0, 0, 0.5); 
+  border-radius: 5px; 
 }
 
 #container p {
   font-size: 16px;
   line-height: 22px;
-  color: #FFFFFF; /* Cambia el color a blanco para mayor contraste */
+  color: #FFFFFF; 
   margin: 0 0 20px 0;
-  padding: 10px 15px; /* Añade padding para mejor separación del borde */
-  border: 2px solid #F1C40F; /* Borde de color amarillo */
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para visibilidad */
-  border-radius: 5px; /* Opcional: hace que los bordes sean redondeados */
-  text-shadow: 1px 1px 2px #000; /* Sombra para resaltar el texto */
+  padding: 10px 15px; 
+  border: 2px solid #F1C40F;
+  background-color: rgba(0, 0, 0, 0.5); 
+  border-radius: 5px; 
+  text-shadow: 1px 1px 2px #000; 
 }
 
 
