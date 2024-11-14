@@ -21,8 +21,48 @@ export class RegisterPage {
     private toastController: ToastController
   ) {}
 
+  validateRutInput(event: any) {
+    const input = event.target.value;
+    this.rut = input.replace(/[^0-9]/g, ''); 
+  }
+
   async onRegister() {
-    
+    const namePattern = /^[a-zA-Z\s]*$/;
+    if (!namePattern.test(this.name)) {
+      const errorToast = await this.toastController.create({
+        message: 'El nombre solo debe contener letras y espacios.',
+        duration: 2000,
+        position: 'top',
+        color: 'danger'
+      });
+      await errorToast.present();
+      return;
+    }
+
+    const rutPattern = /^[0-9]+$/;
+    if (!rutPattern.test(this.rut)) {
+      const errorToast = await this.toastController.create({
+        message: 'El RUT solo debe contener números.',
+        duration: 2000,
+        position: 'top',
+        color: 'danger'
+      });
+      await errorToast.present();
+      return;
+    }
+
+    const passwordPattern = /^(?=.*[A-Z])(?=.*[!@#$&*])/;
+    if (!passwordPattern.test(this.password)) {
+      const errorToast = await this.toastController.create({
+        message: 'La contraseña debe incluir al menos una letra mayúscula y un carácter especial.',
+        duration: 2000,
+        position: 'top',
+        color: 'danger'
+      });
+      await errorToast.present();
+      return;
+    }
+
     if (this.email.endsWith('@profesor.duoc.cl')) {
       this.role = 'profesor';
     } else if (this.email.endsWith('@alumno.duoc.cl')) {
@@ -51,7 +91,6 @@ export class RegisterPage {
       position: 'top'
     });
     await toast.present();
-
     this.name = '';
     this.email = '';
     this.rut = '';
