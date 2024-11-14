@@ -1,15 +1,11 @@
 <ion-header class="ion-no-border">
   <ion-toolbar class="custom-toolbar">
-    <ion-title #title>RegistrAPP</ion-title>
+    <ion-title>RegistrAPP</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="custom-background">
-  <div id="container">
-    <img src="./assets/images/logo1.png" alt="Logo de RegistrAPP" id="logo">
-    <strong #welcomeText class="text-black">¡Bienvenido!</strong>
-    <p #description>Aplicación para registrar la asistencia de los alumnos a través de un código QR.</p>
-    <ion-button #loginButton expand="full" class="custom-button" (click)="goToLogin()">Ingresar a la App</ion-button>
+  <div id="loading-container">
+    <img src="assets/images/loading.gif" alt="Cargando..." id="loading-animation" />
   </div>
 </ion-content>
-
