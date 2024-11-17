@@ -1,13 +1,37 @@
-#loading-animation {
-  width: 150px; 
-  height: auto; 
-}
-
-#loading-container {
+.custom-background {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh; 
-  background-color: #fff; 
-  padding: 0 10px; 
+  background-color: #ffffff; 
+}
+
+#loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo-animation {
+  width: 300px; 
+  height: auto; 
+  margin-bottom: 30px; 
+  animation: fadeInDown 1.5s ease-in-out; 
+}
+
+#loading-animation {
+  width: 80px; 
+  height: 80px; 
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
