@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, Platform, NavController } from '@ionic/angular';
+import { ModalController, Platform, NavController, ToastController } from '@ionic/angular';
 import { BarcodeScanningModalComponent } from './barcode-scanning-modal.component';
 import { LensFacing, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
-import { StorageService } from '../../services/storage.service';  
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-qr',
@@ -10,26 +10,27 @@ import { StorageService } from '../../services/storage.service';
   styleUrls: ['./qr.page.scss'],
 })
 export class QrPage implements OnInit {
-  segment = 'generate';
-  qrText = '';
-  scanResult = '';
+  segment = 'generate'; 
+  qrText = ''; 
+  scanResult = ''; 
 
   constructor(
     private modalController: ModalController,
     private platform: Platform,
     private navCtrl: NavController,
-    private storageService: StorageService 
+    private toastController: ToastController,
+    private storageService: StorageService
   ) {}
 
-  ngOnInit(): void {
-    this.loadUserRut();
-    
+  async ngOnInit() {
+    await this.loadUserRut(); 
+
     if (this.platform.is('capacitor')) {
-      BarcodeScanner.isSupported().then(() => {
-        BarcodeScanner.checkPermissions().then(() => {
-          BarcodeScanner.removeAllListeners(); 
-        });
-      });
+      const isSupported = await BarcodeScanner.isSupported();
+      if (isSupported) {
+        await BarcodeScanner.checkPermissions();
+        BarcodeScanner.removeAllListeners();
+      }
     }
   }
 
@@ -38,26 +39,75 @@ export class QrPage implements OnInit {
   }
 
   async startScan() {
+    const userRole = await this.storageService.get('userRole');
+    if (userRole !== 'profesor') {
+      const toast = await this.toastController.create({
+        message: 'Solo los profesores pueden registrar asistencia.',
+        duration: 2000,
+        position: 'top',
+        color: 'danger',
+      });
+      await toast.present();
+      return;
+    }
+
     const modal = await this.modalController.create({
       component: BarcodeScanningModalComponent,
       cssClass: 'barcode-scanning-modal',
       showBackdrop: false,
-      componentProps: { 
-        formats: [], 
-        LensFacing: LensFacing.Back
-      }
+      componentProps: { formats: [], LensFacing: LensFacing.Back },
     });
 
     await modal.present();
 
     const { data } = await modal.onWillDismiss();
-
     if (data) {
-      this.scanResult = data?.barcode?.displayValue || '';
+      const scannedRut = data?.barcode?.displayValue || '';
+      this.scanResult = scannedRut;
+
+      const success = await this.markAttendance(scannedRut);
+      if (success) {
+        const toast = await this.toastController.create({
+          message: 'Asistencia registrada exitosamente.',
+          duration: 2000,
+          position: 'top',
+          color: 'success',
+        });
+        await toast.present();
+      } else {
+        const toast = await this.toastController.create({
+          message: 'El estudiante no está inscrito en la clase actual.',
+          duration: 2000,
+          position: 'top',
+          color: 'danger',
+        });
+        await toast.present();
+      }
     }
   }
 
+  async markAttendance(studentRut: string): Promise<boolean> {
+    const now = new Date();
+
+    const schedule = await this.storageService.get('schedule') || [];
+
+    for (const classItem of schedule) {
+      const classStartTime = new Date(`${classItem.date} ${classItem.startTime}`);
+      const classEndTime = new Date(`${classItem.date} ${classItem.endTime}`);
+
+      if (now >= classStartTime && now <= classEndTime) {
+        classItem.attendance = classItem.attendance || [];
+        if (!classItem.attendance.includes(studentRut)) {
+          classItem.attendance.push(studentRut);
+          await this.storageService.set('schedule', schedule); 
+          return true; 
+        }
+      }
+    }
+    return false; 
+  }
+
   goBack() {
-    this.navCtrl.navigateBack('/main'); 
+    this.navCtrl.navigateBack('/main');
   }
 }

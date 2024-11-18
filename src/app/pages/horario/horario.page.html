@@ -15,7 +15,8 @@
       <ion-card *ngFor="let class of schedule">
         <ion-card-header>
           <ion-card-title>
-            {{ getSubjectName(class.subject) }} <span *ngIf="isClassInProgress(class.date, class.startTime, class.endTime)"> (En curso)</span>
+            {{ getSubjectName(class.subject) }} 
+            <span *ngIf="isClassInProgress(class.date, class.startTime, class.endTime)"> (En curso)</span>
           </ion-card-title>
         </ion-card-header>
         <ion-card-content>
