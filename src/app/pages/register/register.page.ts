@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from '@ionic/angular';
+import { NavController, ToastController, PopoverController } from '@ionic/angular';
 import { StorageService } from '../../services/storage.service';
+import { NormasPopoverComponent } from '../../normas-popover/normas-popover.component';
 
 @Component({
   selector: 'app-register',
@@ -16,14 +17,32 @@ export class RegisterPage {
   role!: string; 
 
   constructor(
-    private navCtrl: NavController, 
+    private navCtrl: NavController,
     private storageService: StorageService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private popoverController: PopoverController
   ) {}
 
+  async mostrarNormas(ev: Event) {
+    const popover = await this.popoverController.create({
+      component: NormasPopoverComponent,
+      event: ev,
+      translucent: true,
+      backdropDismiss: true,
+    });
+    await popover.present();
+  }
+
   validateRutInput(event: any) {
-    const input = event.target.value;
-    this.rut = input.replace(/[^0-9]/g, ''); 
+    let input = event.target.value;
+
+    input = input.replace(/[^0-9]/g, '');
+
+    if (input.length > 9) {
+      input = input.substring(0, 9);
+    }
+
+    this.rut = input;
   }
 
   async onRegister() {
@@ -91,6 +110,7 @@ export class RegisterPage {
       position: 'top'
     });
     await toast.present();
+
     this.name = '';
     this.email = '';
     this.rut = '';
@@ -99,6 +119,7 @@ export class RegisterPage {
     this.role = '';
   }
 
+  
   goToLogin() {
     this.navCtrl.navigateBack('/login');
   }
