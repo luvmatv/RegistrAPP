@@ -120,13 +120,9 @@ export class MainPage implements OnInit, AfterViewInit {
   }
 
   async updateData() {
-    const alert = await this.alertController.create({
-      header: 'Actualizar Datos',
-      message: 'Esta función aún no está implementada.',
-      buttons: ['Aceptar']
-    });
-    await alert.present();
+    this.navCtrl.navigateForward('/actualizar-datos');
   }
+  
 
   
   async confirmLogout() {

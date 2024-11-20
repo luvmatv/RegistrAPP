@@ -45,9 +45,18 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'actualizar-datos',
+    loadChildren: () => import('./pages/actualizar-datos/actualizar-datos.module').then( m => m.ActualizarDatosPageModule)
+  },
+
+  {
     path: '**',
     loadChildren: () => import('./pages/error404/error404.module').then(m => m.Error404PageModule)
   }
+  
+
+
+
 ];
 
 @NgModule({
