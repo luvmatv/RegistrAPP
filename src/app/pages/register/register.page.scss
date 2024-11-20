@@ -1,0 +1,14 @@
+/* Logo debajo del formulario */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Distancia del logo desde el formulario */
+  }
+  
+  .logo-container img {
+    width: 50px; /* Ajusta el tamaño del logo según sea necesario */
+    height: auto; /* Mantiene la proporción de la imagen */
+    object-fit: contain; /* Asegura que el logo no se deforme */
+  }
+  
