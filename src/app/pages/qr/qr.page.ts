@@ -40,9 +40,9 @@ export class QrPage implements OnInit {
 
   async startScan() {
     const userRole = await this.storageService.get('userRole');
-    if (userRole !== 'profesor') {
+    if (userRole !== 'estudiante') {
       const toast = await this.toastController.create({
-        message: 'Solo los profesores pueden registrar asistencia.',
+        message: 'Solo los alumnos pueden registrar asistencia.',
         duration: 2000,
         position: 'top',
         color: 'danger',

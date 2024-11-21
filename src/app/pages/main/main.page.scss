@@ -13,11 +13,27 @@
   --gradient-bg-dark: linear-gradient(to bottom, #1c1c1c, #3a3a3a);
 }
 
+
 .custom-toolbar {
   --background: var(--secondary-color);
   color: var(--primary-color);
   text-align: center;
   font-size: 20px;
+}
+
+.logo-container {
+  position: absolute;
+  top: 50%;
+  left: 10px; /* Mueve el logo a la izquierda */
+  transform: translateY(-50%); /* Centra verticalmente */
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  width: 80px; /* Agranda el logo */
+  height: auto;
+  object-fit: contain;
 }
 
 .custom-background {
@@ -100,26 +116,6 @@ body.dark {
   strong {
     color: var(--primary-color);
   }
- 
-.logo-container {
-  position: absolute;
-  top: 10px; 
-  left: 10px; 
-  display: flex;
-  align-items: center; 
-  height: auto; 
-}
-
-.logo-container img {
-  width: 40px; 
-  height: auto; 
-  object-fit: contain; 
-}
-
-  
-  
-  
-  
 
   ion-item {
     --background: var(--dark-item-bg);
@@ -146,10 +142,5 @@ body.dark {
 
   ion-button ion-icon {
     color: var(--primary-color);
-  }
-
-  ion-toggle {
-    --background: var(--dark-toggle-bg);
-    --color-checked: var(--dark-toggle-checked);
   }
 }
