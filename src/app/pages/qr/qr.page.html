@@ -1,16 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="goBack()">
-        <ion-icon name="arrow-back-outline"></ion-icon>
-      </ion-button>
+      <ion-back-button defaultHref="/main"></ion-back-button>
     </ion-buttons>
     <ion-title>RegistrAPP QR</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding ion-text-center">
-  <!-- Segmento para alternar entre escanear y generar QR -->
   <ion-segment [(ngModel)]="segment" mode="ios">
     <ion-segment-button value="scan">
       <ion-label>Scanear QR</ion-label>
@@ -40,7 +37,7 @@
   <!-- Contenido de generar QR -->
   <div *ngIf="segment === 'generate'">
     <div id="qrImage">
-      <qr-code [value]="qrText" size="190" errorCorrectionLevel="M"></qr-code>
+      <qr-code [value]="qrRedirectUrl" size="190" errorCorrectionLevel="M"></qr-code>
     </div>
   </div>
 </ion-content>
