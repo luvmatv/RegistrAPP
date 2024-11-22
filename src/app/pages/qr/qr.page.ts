@@ -11,8 +11,9 @@ import { StorageService } from '../../services/storage.service';
 })
 export class QrPage implements OnInit {
   segment = 'generate'; 
-  qrText = ''; 
   scanResult = ''; 
+
+  qrRedirectUrl = 'asistencia';
 
   constructor(
     private modalController: ModalController,
@@ -23,8 +24,6 @@ export class QrPage implements OnInit {
   ) {}
 
   async ngOnInit() {
-    await this.loadUserRut(); 
-
     if (this.platform.is('capacitor')) {
       const isSupported = await BarcodeScanner.isSupported();
       if (isSupported) {
@@ -34,15 +33,11 @@ export class QrPage implements OnInit {
     }
   }
 
-  async loadUserRut() {
-    this.qrText = await this.storageService.get('userRut');
-  }
-
   async startScan() {
     const userRole = await this.storageService.get('userRole');
     if (userRole !== 'estudiante') {
       const toast = await this.toastController.create({
-        message: 'Solo los alumnos pueden registrar asistencia.',
+        message: 'Solo los estudiantes pueden usar el lector QR.',
         duration: 2000,
         position: 'top',
         color: 'danger',
@@ -62,21 +57,14 @@ export class QrPage implements OnInit {
 
     const { data } = await modal.onWillDismiss();
     if (data) {
-      const scannedRut = data?.barcode?.displayValue || '';
-      this.scanResult = scannedRut;
+      const scannedUrl = data?.barcode?.displayValue || '';
+      this.scanResult = scannedUrl;
 
-      const success = await this.markAttendance(scannedRut);
-      if (success) {
-        const toast = await this.toastController.create({
-          message: 'Asistencia registrada exitosamente.',
-          duration: 2000,
-          position: 'top',
-          color: 'success',
-        });
-        await toast.present();
+      if (scannedUrl === this.qrRedirectUrl) {
+        this.navCtrl.navigateForward('/asistencia'); 
       } else {
         const toast = await this.toastController.create({
-          message: 'El estudiante no está inscrito en la clase actual.',
+          message: 'El QR escaneado no es válido para redirigir.',
           duration: 2000,
           position: 'top',
           color: 'danger',
@@ -84,27 +72,6 @@ export class QrPage implements OnInit {
         await toast.present();
       }
     }
-  }
-
-  async markAttendance(studentRut: string): Promise<boolean> {
-    const now = new Date();
-
-    const schedule = await this.storageService.get('schedule') || [];
-
-    for (const classItem of schedule) {
-      const classStartTime = new Date(`${classItem.date} ${classItem.startTime}`);
-      const classEndTime = new Date(`${classItem.date} ${classItem.endTime}`);
-
-      if (now >= classStartTime && now <= classEndTime) {
-        classItem.attendance = classItem.attendance || [];
-        if (!classItem.attendance.includes(studentRut)) {
-          classItem.attendance.push(studentRut);
-          await this.storageService.set('schedule', schedule); 
-          return true; 
-        }
-      }
-    }
-    return false; 
   }
 
   goBack() {

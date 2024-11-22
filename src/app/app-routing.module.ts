@@ -46,13 +46,19 @@ const routes: Routes = [
   },
   {
     path: 'actualizar-datos',
-    loadChildren: () => import('./pages/actualizar-datos/actualizar-datos.module').then( m => m.ActualizarDatosPageModule)
+    loadChildren: () => import('./pages/actualizar-datos/actualizar-datos.module').then( m => m.ActualizarDatosPageModule),
+    canActivate: [AuthGuard]
   },
-
+  {
+    path: 'asistencia',
+    loadChildren: () => import('./pages/asistencia/asistencia.module').then( m => m.AsistenciaPageModule),
+    canActivate: [AuthGuard]
+  },
   {
     path: '**',
     loadChildren: () => import('./pages/error404/error404.module').then(m => m.Error404PageModule)
   }
+
   
 
 
