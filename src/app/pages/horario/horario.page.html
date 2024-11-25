@@ -1,34 +1,45 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/main"></ion-back-button>
-    </ion-buttons>
+<ion-header class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <div class="logo-container">
+    </div>
     <ion-title>Horario</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div *ngIf="userCareer">
-    <h2>Horario para {{ careerName }}</h2>
-    
+  <div *ngIf="userCareer" class="schedule-container">
     <div *ngIf="schedule && schedule.length > 0">
-      <ion-card *ngFor="let class of schedule">
+      <ion-card *ngFor="let class of schedule" class="class-card">
         <ion-card-header>
           <ion-card-title>
-            {{ getSubjectName(class.subject) }} 
-            <span *ngIf="isClassInProgress(class.date, class.startTime, class.endTime)"> (En curso)</span>
+            {{ getSubjectName(class.subject) }}
+            <span *ngIf="isClassInProgress(class.date, class.startTime, class.endTime)" class="in-progress">
+              (En curso)
+            </span>
           </ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          <p><strong>Sección:</strong> {{ class.section }}</p>
-          <p><strong>Sala:</strong> {{ class.room }}</p>
-          <p><strong>Fecha:</strong> {{ class.date | date: 'EEEE, d MMMM y' }}</p>
-          <p><strong>Hora:</strong> {{ class.startTime }} - {{ class.endTime }}</p>
+          <p>
+            <ion-icon name="people-outline"></ion-icon>
+            <strong>Sección:</strong> {{ class.section }}
+          </p>
+          <p>
+            <ion-icon name="location-outline"></ion-icon>
+            <strong>Sala:</strong> {{ class.room }}
+          </p>
+          <p>
+            <ion-icon name="calendar-outline"></ion-icon>
+            <strong>Fecha:</strong> {{ class.date | date: 'EEEE, d MMMM y' }}
+          </p>
+          <p>
+            <ion-icon name="time-outline"></ion-icon>
+            <strong>Hora:</strong> {{ class.startTime }} - {{ class.endTime }}
+          </p>
         </ion-card-content>
       </ion-card>
     </div>
 
-    <div *ngIf="!schedule || schedule.length === 0">
+    <div *ngIf="!schedule || schedule.length === 0" class="no-schedule">
       <p>No hay horario disponible para esta carrera.</p>
     </div>
   </div>
