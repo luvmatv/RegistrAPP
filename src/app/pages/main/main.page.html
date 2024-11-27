@@ -15,19 +15,6 @@
   </ion-toolbar>
 </ion-header>
 
-
-
-<ion-content class="custom-background">
-  <div id="container">
-    <strong #welcomeText>¡Bienvenido, {{ userName }}!</strong>
-    <p>Hora actual: {{ currentTime }}</p> 
-  </div>
-
-  <div class="button-container">
-    <ion-button class="custom-button" (click)="goToQr()">Registrar asistencia</ion-button>
-    <ion-button class="custom-button" (click)="goToHorario()">Horario</ion-button>
-  </div>
-</ion-content>
 <ion-menu side="end" menuId="settings-menu" contentId="main-content">
   <ion-header>
     <ion-toolbar>
@@ -41,22 +28,15 @@
         <ion-label>Activar modo oscuro</ion-label>
         <ion-toggle [(ngModel)]="isDarkMode" (ionChange)="toggleDarkMode()"></ion-toggle>
       </ion-item>
-
-          <!-- Botón que solo se muestra si el usuario es un profesor -->
-    <ion-item *ngIf="isProfesor" [routerLink]="['/ver-solicitudes']">
-      <ion-label>Ver Solicitudes</ion-label>
-    </ion-item>
-      
-
+      <ion-item *ngIf="isProfesor" [routerLink]="['/ver-solicitudes']">
+        <ion-label>Ver Solicitudes</ion-label>
+      </ion-item>
       <ion-item (click)="updateData()">
         <ion-label>Actualizar datos</ion-label>
       </ion-item>
-
-
       <ion-item [routerLink]="['/solicitudes']">
         <ion-label>Solicitudes</ion-label>
       </ion-item>
-
       <ion-item (click)="confirmLogout()">
         <ion-label>Cerrar sesión</ion-label>
       </ion-item>
@@ -71,9 +51,7 @@
   </div>
 
   <div class="button-container">
-    <ion-button class="custom-button" (click)="goToQr()">Registrar asistencia</ion-button>
-    <ion-button class="custom-button" (click)="goToHorario()">Horario</ion-button>
-    <ion-button class="custom-button" (click)="goToLogin()">Cerrar sesión</ion-button>
+    <ion-button class="custom-dark-button" (click)="goToQr()">Registrar asistencia</ion-button>
+    <ion-button class="custom-dark-button" (click)="goToHorario()">Horario</ion-button>
   </div>
 </ion-content>
-

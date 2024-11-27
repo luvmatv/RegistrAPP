@@ -11,7 +11,7 @@
     </ion-card-header>
     <ion-card-content>
       <form [formGroup]="solicitudForm" (ngSubmit)="enviarSolicitud()">
-        <!-- Sede -->
+       
         <ion-item>
           <ion-label>Sede</ion-label>
           <ion-select formControlName="sede" placeholder="Selecciona una sede">
@@ -27,7 +27,7 @@
           La sede es obligatoria.
         </ion-note>
 
-        <!-- Categoría -->
+        
         <ion-item>
           <ion-label>Categoría</ion-label>
           <ion-select formControlName="categoria" placeholder="Selecciona una categoría">
@@ -43,7 +43,7 @@
           La categoría es obligatoria.
         </ion-note>
 
-        <!-- Servicio -->
+        
         <ion-item>
           <ion-label>Servicio</ion-label>
           <ion-select formControlName="servicio" placeholder="Selecciona un servicio">
@@ -59,7 +59,6 @@
           El servicio es obligatorio.
         </ion-note>
 
-        <!-- Comentarios -->
         <ion-item>
           <ion-label position="floating">Comentarios</ion-label>
           <ion-textarea
@@ -75,7 +74,6 @@
           Los comentarios son obligatorios (mínimo 10 caracteres).
         </ion-note>
 
-        <!-- Botón Enviar -->
         <ion-button expand="full" type="submit" [disabled]="!solicitudForm.valid">
           Enviar Solicitud
         </ion-button>
