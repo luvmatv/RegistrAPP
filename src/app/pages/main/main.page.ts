@@ -13,6 +13,7 @@ export class MainPage implements OnInit, AfterViewInit {
   userName: string | null = '';
   currentTime: string = '';
   isDarkMode: boolean = false; 
+  isProfesor: boolean = false;  // Variable para controlar la visibilidad del botón
 
   @ViewChild('welcomeText', { read: ElementRef }) welcomeText!: ElementRef;
 
@@ -31,10 +32,13 @@ export class MainPage implements OnInit, AfterViewInit {
     this.updateTime();
     setInterval(() => this.updateTime(), 1000); 
 
-   
+    // Verificar si el correo del usuario es un profesor
+    if (this.userEmail && this.userEmail.endsWith('@profesor.duoc.cl')) {
+      this.isProfesor = true;
+    }
+
     this.menu.enable(true, 'settings-menu');
 
-   
     const savedDarkMode = localStorage.getItem('darkMode');
     if (savedDarkMode) {
       this.isDarkMode = JSON.parse(savedDarkMode);
@@ -60,13 +64,11 @@ export class MainPage implements OnInit, AfterViewInit {
     welcomeAnimation.play(); 
   }
 
- 
   toggleDarkMode() {
     this.isDarkMode = !this.isDarkMode;
     this.applyDarkMode(); 
     localStorage.setItem('darkMode', JSON.stringify(this.isDarkMode)); 
   }
-
 
   applyDarkMode() {
     if (this.isDarkMode) {
@@ -76,7 +78,6 @@ export class MainPage implements OnInit, AfterViewInit {
     }
   }
 
- 
   async goToLogin() {
     const alert = await this.alertController.create({
       header: 'Confirmar',
@@ -114,7 +115,6 @@ export class MainPage implements OnInit, AfterViewInit {
     this.navCtrl.navigateForward('/horario');
   }
 
-
   openSettingsMenu() {
     this.menu.open('settings-menu'); 
   }
@@ -122,9 +122,7 @@ export class MainPage implements OnInit, AfterViewInit {
   async updateData() {
     this.navCtrl.navigateForward('/actualizar-datos');
   }
-  
 
-  
   async confirmLogout() {
     const alert = await this.alertController.create({
       header: 'Confirmar',

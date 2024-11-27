@@ -50,14 +50,27 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'solicitudes',
+    loadChildren: () => import('./pages/solicitudes/solicitudes.module').then( m => m.SolicitudesPageModule)
+  },
+
+  {
     path: 'asistencia',
     loadChildren: () => import('./pages/asistencia/asistencia.module').then( m => m.AsistenciaPageModule),
     canActivate: [AuthGuard]
   },
   {
+    path: 'ver-solicitudes',
+    loadChildren: () => import('./pages/ver-solicitudes/ver-solicitudes.module').then( m => m.VerSolicitudesPageModule)
+  },
+
+  {
     path: '**',
     loadChildren: () => import('./pages/error404/error404.module').then(m => m.Error404PageModule)
-  }
+  },
+
+
+ 
 
   
 

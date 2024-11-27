@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Solicitudes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let solicitud of solicitudes">
+      <ion-card-header>
+        <ion-card-title>Solicitud de {{ solicitud.nombreUsuario }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-label>
+            <h3>Sede:</h3>
+            <p>{{ solicitud.sede }}</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <h3>Categoría:</h3>
+            <p>{{ solicitud.categoria }}</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <h3>Servicio:</h3>
+            <p>{{ solicitud.servicio }}</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>
+            <h3>Comentarios:</h3>
+            <p>{{ solicitud.comentarios }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-button expand="full" color="danger" (click)="limpiarSolicitudes()">
+    Limpiar todas las solicitudes
+  </ion-button>
+</ion-content>

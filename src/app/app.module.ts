@@ -8,10 +8,10 @@ import { IonicStorageModule } from '@ionic/storage-angular';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 
+import { ReactiveFormsModule } from '@angular/forms'; // Importar ReactiveFormsModule
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
-
 import { NormasPopoverComponent } from './normas-popover/normas-popover.component';
 
 registerLocaleData(localeEs, 'es');
@@ -26,7 +26,8 @@ registerLocaleData(localeEs, 'es');
     IonicModule.forRoot(),
     AppRoutingModule,
     IonicStorageModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule // Agregar ReactiveFormsModule aquí
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es' },

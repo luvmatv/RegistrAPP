@@ -41,6 +41,11 @@
         <ion-label>Activar modo oscuro</ion-label>
         <ion-toggle [(ngModel)]="isDarkMode" (ionChange)="toggleDarkMode()"></ion-toggle>
       </ion-item>
+
+          <!-- Botón que solo se muestra si el usuario es un profesor -->
+    <ion-item *ngIf="isProfesor" [routerLink]="['/ver-solicitudes']">
+      <ion-label>Ver Solicitudes</ion-label>
+    </ion-item>
       
 
       <ion-item (click)="updateData()">
@@ -48,7 +53,7 @@
       </ion-item>
 
 
-      <ion-item [routerLink]="['/requests']">
+      <ion-item [routerLink]="['/solicitudes']">
         <ion-label>Solicitudes</ion-label>
       </ion-item>
 

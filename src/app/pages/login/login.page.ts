@@ -49,6 +49,13 @@ export class LoginPage implements AfterViewInit {
 
     if (isLoginSuccessful) {
       this.errorMessage = '';
+      
+      // Al iniciar sesión con éxito, guarda el nombre de usuario en localStorage
+      const userName = await this.authService.getUserName();
+      if (userName) {
+        localStorage.setItem('nombreUsuario', userName);  // Guardamos el nombre del usuario
+      }
+
       this.navCtrl.navigateForward('/main'); 
     } else {
       this.errorMessage = 'Contraseña incorrecta. Intenta de nuevo.'; 
@@ -63,7 +70,6 @@ export class LoginPage implements AfterViewInit {
     this.navCtrl.navigateForward('/change-password'); 
   }
 
-  
   goToHome() {
     this.navCtrl.navigateBack('/home');
   }

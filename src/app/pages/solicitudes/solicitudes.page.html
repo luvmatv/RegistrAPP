@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Enviar Solicitud</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Formulario de Solicitud</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="solicitudForm" (ngSubmit)="enviarSolicitud()">
+        <!-- Sede -->
+        <ion-item>
+          <ion-label>Sede</ion-label>
+          <ion-select formControlName="sede" placeholder="Selecciona una sede">
+            <ion-select-option value="san_joaquin">San Joaquín</ion-select-option>
+            <ion-select-option value="antonio_varas">Antonio Varas</ion-select-option>
+            <ion-select-option value="melipilla">Melipilla</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-note
+          *ngIf="solicitudForm.get('sede')?.touched && solicitudForm.get('sede')?.invalid"
+          color="danger"
+        >
+          La sede es obligatoria.
+        </ion-note>
+
+        <!-- Categoría -->
+        <ion-item>
+          <ion-label>Categoría</ion-label>
+          <ion-select formControlName="categoria" placeholder="Selecciona una categoría">
+            <ion-select-option value="academico">Académico</ion-select-option>
+            <ion-select-option value="financiamiento">Financiamiento</ion-select-option>
+            <ion-select-option value="vida_estudiantil">Vida Estudiantil</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-note
+          *ngIf="solicitudForm.get('categoria')?.touched && solicitudForm.get('categoria')?.invalid"
+          color="danger"
+        >
+          La categoría es obligatoria.
+        </ion-note>
+
+        <!-- Servicio -->
+        <ion-item>
+          <ion-label>Servicio</ion-label>
+          <ion-select formControlName="servicio" placeholder="Selecciona un servicio">
+            <ion-select-option value="asuntos_estudiantiles">Asuntos Estudiantiles</ion-select-option>
+            <ion-select-option value="pagos">Pagos</ion-select-option>
+            <ion-select-option value="pastoral">Pastoral</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-note
+          *ngIf="solicitudForm.get('servicio')?.touched && solicitudForm.get('servicio')?.invalid"
+          color="danger"
+        >
+          El servicio es obligatorio.
+        </ion-note>
+
+        <!-- Comentarios -->
+        <ion-item>
+          <ion-label position="floating">Comentarios</ion-label>
+          <ion-textarea
+            formControlName="comentarios"
+            placeholder="Escribe tus comentarios aquí"
+            rows="6"
+          ></ion-textarea>
+        </ion-item>
+        <ion-note
+          *ngIf="solicitudForm.get('comentarios')?.touched && solicitudForm.get('comentarios')?.invalid"
+          color="danger"
+        >
+          Los comentarios son obligatorios (mínimo 10 caracteres).
+        </ion-note>
+
+        <!-- Botón Enviar -->
+        <ion-button expand="full" type="submit" [disabled]="!solicitudForm.valid">
+          Enviar Solicitud
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
