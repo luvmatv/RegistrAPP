@@ -80,4 +80,8 @@ export class HorarioPage implements OnInit {
 
     return currentDate >= classDateTimeStart && currentDate <= classDateTimeEnd;
   }
+
+  isClassPresent(classItem: any): boolean {
+    return classItem.attended;
+  }
 }
