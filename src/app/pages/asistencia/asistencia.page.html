@@ -1,13 +1,30 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>asistencia</ion-title>
+    <ion-title>Asistencia</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">asistencia</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <div *ngIf="currentClass" class="current-class">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          Clase actual: {{ currentClass.subject }}
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Sección:</strong> {{ currentClass.section }}</p>
+        <p><strong>Sala:</strong> {{ currentClass.room }}</p>
+        <p><strong>Fecha:</strong> {{ currentClass.date | date: 'EEEE, d MMMM y' }}</p>
+        <p><strong>Hora:</strong> {{ currentClass.startTime }} - {{ currentClass.endTime }}</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-button expand="block" color="success" (click)="markAttendance()">
+      Marcar asistencia
+    </ion-button>
+  </div>
+
+  <div *ngIf="!currentClass" class="no-class">
+    <p>No hay ninguna clase en curso.</p>
+  </div>
 </ion-content>
