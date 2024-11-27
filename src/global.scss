@@ -35,3 +35,52 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+body.dark {
+    --ion-background-color: #222;
+    --ion-text-color: #fff;
+    --ion-toolbar-background: #333;
+    --ion-toolbar-text-color: #fff;
+    --ion-item-background: #333;
+    --ion-item-text-color: #fff;
+    --ion-border-width: 0 !important;
+    --ion-border-color: transparent !important; 
+
+    
+    ion-button.custom-dark-button {
+        --border-width: 0 !important;  
+        --box-shadow: none !important;  
+        --border-color: transparent !important;  
+        --background: #6200ea !important;   
+        --color: white !important;          
+        --border-radius: 4px !important;    
+    }
+}
+
+
+body {
+    --ion-background-color: #fff;
+    --ion-text-color: #000;
+    --ion-toolbar-background: #fff;
+    --ion-toolbar-text-color: #000;
+    --ion-item-background: #fff;
+    --ion-item-text-color: #000;
+    --ion-border-width: 1px !important;  
+    --ion-border-color: #ddd !important;  
+}
+
+
+body.dark ion-button.custom-dark-button {
+    --border-width: 0 !important;  
+    --box-shadow: none !important;  
+    --border-color: transparent !important;  
+}
+
+
+ion-button.custom-dark-button {
+    --border-width: 0 !important;  
+    --box-shadow: none !important; 
+    --border-color: transparent !important; 
+    --background: #6200ea !important; 
+    --color: white !important;        
+    --border-radius: 4px !important;  
+}

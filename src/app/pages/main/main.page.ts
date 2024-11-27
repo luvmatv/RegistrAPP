@@ -12,9 +12,8 @@ export class MainPage implements OnInit, AfterViewInit {
   userEmail: string | null = '';
   userName: string | null = '';
   currentTime: string = '';
-  isDarkMode: boolean = false; 
-  isProfesor: boolean = false;  // Variable para controlar la visibilidad del botón
-
+  isDarkMode: boolean = false;
+  isProfesor: boolean = false; 
   @ViewChild('welcomeText', { read: ElementRef }) welcomeText!: ElementRef;
 
   constructor(
@@ -32,13 +31,13 @@ export class MainPage implements OnInit, AfterViewInit {
     this.updateTime();
     setInterval(() => this.updateTime(), 1000); 
 
-    // Verificar si el correo del usuario es un profesor
     if (this.userEmail && this.userEmail.endsWith('@profesor.duoc.cl')) {
       this.isProfesor = true;
     }
 
     this.menu.enable(true, 'settings-menu');
 
+    
     const savedDarkMode = localStorage.getItem('darkMode');
     if (savedDarkMode) {
       this.isDarkMode = JSON.parse(savedDarkMode);
@@ -65,7 +64,7 @@ export class MainPage implements OnInit, AfterViewInit {
   }
 
   toggleDarkMode() {
-    this.isDarkMode = !this.isDarkMode;
+    this.isDarkMode = !this.isDarkMode; 
     this.applyDarkMode(); 
     localStorage.setItem('darkMode', JSON.stringify(this.isDarkMode)); 
   }
@@ -74,7 +73,7 @@ export class MainPage implements OnInit, AfterViewInit {
     if (this.isDarkMode) {
       document.body.classList.add('dark'); 
     } else {
-      document.body.classList.remove('dark'); 
+      document.body.classList.remove('dark');
     }
   }
 

@@ -22,20 +22,20 @@ export class SolicitudesPage {
     if (this.solicitudForm.valid) {
       const solicitudData = {
         ...this.solicitudForm.value,
-        nombreUsuario: localStorage.getItem('nombreUsuario') || 'Anónimo', // Obtener el nombre del usuario desde localStorage
+        nombreUsuario: localStorage.getItem('nombreUsuario') || 'Anónimo', 
       };
 
-      // Recuperar solicitudes existentes desde localStorage
+      
       const solicitudesGuardadas = JSON.parse(localStorage.getItem('solicitudes') || '[]');
 
-      // Agregar la nueva solicitud
+      
       solicitudesGuardadas.push(solicitudData);
 
-      // Guardar nuevamente en localStorage
+      
       localStorage.setItem('solicitudes', JSON.stringify(solicitudesGuardadas));
 
       alert('Solicitud enviada correctamente');
-      this.solicitudForm.reset(); // Limpia el formulario después de enviar
+      this.solicitudForm.reset(); 
     } else {
       alert('Por favor, completa todos los campos correctamente.');
     }
