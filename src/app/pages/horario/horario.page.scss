@@ -1,27 +1,29 @@
 ion-content {
-  --background: #000000;
+  --background: none;
 
   .schedule-container {
     padding: 16px;
 
     .class-card {
-      background-color: #1c1c1e;
-      border: 1px solid #3a3a3c;
-      color: #ffffff;
+      background-color: #1c1c1e; 
+      border: 1px solid #3a3a3c; 
+      color: #a390d4; 
       margin-bottom: 15px;
+      border-radius: 8px; 
 
       ion-card-header {
-        background-color: #2c2c2e;
+        background-color: #2c2c2e; 
         border-bottom: 1px solid #3a3a3c;
         padding: 10px;
 
         ion-card-title {
           font-size: 1.2rem;
           font-weight: bold;
+          color: #a390d4; 
 
           .in-progress {
             font-size: 1rem;
-            color: #50fa7b;
+            color: #a390d4; 
           }
         }
       }
@@ -38,11 +40,11 @@ ion-content {
           ion-icon {
             margin-right: 8px;
             font-size: 1rem;
-            color: #ebf300; //Color del icono :v
+            color: #a390d4; 
           }
 
           strong {
-            color: #ffffff;
+            color: #ffffff; 
           }
         }
       }
@@ -50,9 +52,13 @@ ion-content {
 
     .no-schedule {
       text-align: center;
-      color: #ffffff;
+      color: #ffffff; 
       font-size: 1.2rem;
       margin-top: 20px;
     }
+  }
+
+  ion-icon {
+    color: #a390d4; 
   }
 }

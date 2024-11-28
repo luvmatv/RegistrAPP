@@ -25,13 +25,10 @@ export class SolicitudesPage {
         nombreUsuario: localStorage.getItem('nombreUsuario') || 'Anónimo', 
       };
 
-      
       const solicitudesGuardadas = JSON.parse(localStorage.getItem('solicitudes') || '[]');
 
-      
       solicitudesGuardadas.push(solicitudData);
 
-      
       localStorage.setItem('solicitudes', JSON.stringify(solicitudesGuardadas));
 
       alert('Solicitud enviada correctamente');
