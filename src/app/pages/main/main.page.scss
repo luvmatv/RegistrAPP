@@ -1,22 +1,20 @@
 :root {
-  --primary-color: #fff;
-  --secondary-color: #434343;
+  --primary-color: #0056a0; /* Azul DUOC */
+  --secondary-color: #ffffff;
+  --accent-color: #fcb900; /* Amarillo DUOC */
+  --background-light: #f4f4f4;
+  --button-hover: #007acc; /* Azul claro para hover */
   --dark-background: #222;
   --dark-toolbar-bg: #333;
   --dark-button-bg: #444;
   --dark-button-hover: #555;
-  --dark-item-bg: #444;
-  --dark-item-color: #fff;
-  --dark-toggle-bg: #444;
-  --dark-toggle-checked: #3e8e41;
-  --gradient-bg-light: linear-gradient(to bottom, #000000, #434343);
+  --gradient-bg-light: linear-gradient(to bottom, #0056a0, #ffffff);
   --gradient-bg-dark: linear-gradient(to bottom, #1c1c1c, #3a3a3a);
 }
 
-
 .custom-toolbar {
-  --background: var(--secondary-color);
-  color: var(--primary-color);
+  --background: var(--primary-color);
+  color: var(--secondary-color);
   text-align: center;
   font-size: 20px;
 }
@@ -24,14 +22,14 @@
 .logo-container {
   position: absolute;
   top: 50%;
-  left: 10px; /* Mueve el logo a la izquierda */
-  transform: translateY(-50%); /* Centra verticalmente */
+  left: 10px;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
 }
 
 .logo-container img {
-  width: 80px; /* Agranda el logo */
+  width: 80px;
   height: auto;
   object-fit: contain;
 }
@@ -58,8 +56,15 @@
 }
 
 strong {
-  font-size: 24px;
+  font-size: 28px;
   color: var(--primary-color);
+  font-weight: bold;
+}
+
+p {
+  font-size: 16px;
+  color: var(--primary-color);
+  margin-top: 5px;
 }
 
 .button-container {
@@ -69,78 +74,53 @@ strong {
   align-items: center;
 }
 
-.custom-button {
+.custom-dark-button {
   width: 90%;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   padding: 15px;
   border-radius: 10px;
   font-size: 18px;
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  border: 1px solid var(--dark-button-bg);
-  transition: background-color 0.3s, transform 0.3s ease-in-out;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
 }
 
-.custom-button:hover {
-  transform: scale(1.05);
-  background-color: var(--dark-button-hover);
+.custom-dark-button:hover {
+  background-color: var(--button-hover);
+  transform: translateY(-2px);
+}
+
+.custom-dark-button:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 body.dark {
   --ion-background-color: var(--dark-background);
-  --ion-text-color: var(--primary-color);
+  --ion-text-color: var(--secondary-color);
 
   .custom-toolbar {
     --background: var(--dark-toolbar-bg);
-    color: var(--primary-color);
+    color: var(--secondary-color);
   }
 
   .custom-background {
     background: var(--gradient-bg-dark);
   }
 
-  #container {
-    color: var(--primary-color);
+  #container strong {
+    color: var(--secondary-color);
   }
 
-  .custom-button {
+  .custom-dark-button {
     background-color: var(--dark-button-bg);
-    color: var(--primary-color);
-    border: 1px solid var(--dark-button-hover);
+    color: var(--secondary-color);
   }
 
-  .custom-button:hover {
+  .custom-dark-button:hover {
     background-color: var(--dark-button-hover);
-  }
-
-  strong {
-    color: var(--primary-color);
-  }
-
-  ion-item {
-    --background: var(--dark-item-bg);
-    --color: var(--dark-item-color);
-  }
-
-  ion-icon {
-    color: var(--primary-color);
-  }
-
-  ion-toggle {
-    --background: var(--dark-toggle-bg);
-    --color-checked: var(--dark-toggle-checked);
-  }
-
-  ion-button {
-    --background: var(--dark-button-bg);
-    --color: var(--primary-color);
-  }
-
-  ion-menu {
-    --background: var(--dark-toolbar-bg);
-  }
-
-  ion-button ion-icon {
-    color: var(--primary-color);
   }
 }
