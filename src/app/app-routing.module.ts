@@ -51,7 +51,8 @@ const routes: Routes = [
   },
   {
     path: 'solicitudes',
-    loadChildren: () => import('./pages/solicitudes/solicitudes.module').then( m => m.SolicitudesPageModule)
+    loadChildren: () => import('./pages/solicitudes/solicitudes.module').then( m => m.SolicitudesPageModule),
+    canActivate: [AuthGuard]
   },
 
   {
@@ -61,7 +62,8 @@ const routes: Routes = [
   },
   {
     path: 'ver-solicitudes',
-    loadChildren: () => import('./pages/ver-solicitudes/ver-solicitudes.module').then( m => m.VerSolicitudesPageModule)
+    loadChildren: () => import('./pages/ver-solicitudes/ver-solicitudes.module').then( m => m.VerSolicitudesPageModule),
+    canActivate: [AuthGuard]
   },
 
   {

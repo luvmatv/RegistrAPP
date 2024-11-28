@@ -18,14 +18,15 @@ export class ActualizarDatosPage implements OnInit {
   ) {}
 
   async ngOnInit() {
-   
     this.userName = await this.storageService.get('userName');
     this.userEmail = await this.storageService.get('userEmail');
   }
 
-  
+  goBack() {
+    this.navCtrl.back();
+  }
+
   async saveChanges() {
-   
     if (!this.userEmail || !this.userName) {
       const toast = await this.toastController.create({
         message: 'Por favor, ingrese todos los campos.',
@@ -36,11 +37,9 @@ export class ActualizarDatosPage implements OnInit {
       return;
     }
 
-   
     await this.storageService.set('userName', this.userName);
     await this.storageService.set('userEmail', this.userEmail);
 
-   
     const toast = await this.toastController.create({
       message: 'Datos actualizados correctamente.',
       duration: 2000,
@@ -48,7 +47,6 @@ export class ActualizarDatosPage implements OnInit {
     });
     await toast.present();
 
-    
-    this.navCtrl.navigateBack('/home');
+    this.navCtrl.navigateBack('/login');
   }
 }

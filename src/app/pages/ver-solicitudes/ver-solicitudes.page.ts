@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service'; // Asegúrate de importar el servicio AuthService
+import { AuthService } from '../../services/auth.service'; 
 
 @Component({
   selector: 'app-ver-solicitudes',
@@ -7,12 +7,12 @@ import { AuthService } from '../../services/auth.service'; // Asegúrate de impo
   styleUrls: ['./ver-solicitudes.page.scss'],
 })
 export class VerSolicitudesPage implements OnInit {
-  solicitudes: any[] = []; // Lista de solicitudes cargadas
+  solicitudes: any[] = []; 
 
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.cargarSolicitudes(); // Cargar las solicitudes al iniciar
+    this.cargarSolicitudes(); 
   }
 
   cargarSolicitudes() {
@@ -25,8 +25,8 @@ export class VerSolicitudesPage implements OnInit {
   }
 
   limpiarSolicitudes() {
-    localStorage.removeItem('solicitudes'); // Borra todas las solicitudes del localStorage
-    this.solicitudes = []; // Limpia la lista mostrada
+    localStorage.removeItem('solicitudes'); 
+    this.solicitudes = []; 
     alert('Todas las solicitudes han sido eliminadas.');
   }
 }

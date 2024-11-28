@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
     <ion-title>Enviar Solicitud</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -11,7 +14,6 @@
     </ion-card-header>
     <ion-card-content>
       <form [formGroup]="solicitudForm" (ngSubmit)="enviarSolicitud()">
-       
         <ion-item>
           <ion-label>Sede</ion-label>
           <ion-select formControlName="sede" placeholder="Selecciona una sede">
@@ -27,7 +29,6 @@
           La sede es obligatoria.
         </ion-note>
 
-        
         <ion-item>
           <ion-label>Categoría</ion-label>
           <ion-select formControlName="categoria" placeholder="Selecciona una categoría">
@@ -43,7 +44,6 @@
           La categoría es obligatoria.
         </ion-note>
 
-        
         <ion-item>
           <ion-label>Servicio</ion-label>
           <ion-select formControlName="servicio" placeholder="Selecciona un servicio">
