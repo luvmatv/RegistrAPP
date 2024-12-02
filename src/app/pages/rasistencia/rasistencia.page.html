@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Revisar Asistencia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card *ngIf="attendanceRecords.length > 0">
+    <ion-card-header>
+      <ion-card-title>Registro de Asistencia</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let record of attendanceRecords">
+          <ion-icon
+            [name]="record.status === 'Asistido' ? 'checkmark-circle-outline' : 'close-circle-outline'"
+            slot="start"
+          ></ion-icon>
+          <ion-label>
+            <h2>{{ record.subject }}</h2>
+            <p>{{ record.date | date: 'dd-MM-yyyy' }} | {{ record.startTime }} - {{ record.endTime }}</p>
+            <p>Sala: {{ record.room }}</p>
+          </ion-label>
+          <ion-badge
+            slot="end"
+            [color]="record.status === 'Asistido' ? 'success' : 'danger'"
+          >
+            {{ record.status }}
+          </ion-badge>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="attendanceRecords.length === 0" class="no-records">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Registro de Asistencia</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-icon name="sad-outline"></ion-icon>
+        <p>No hay registros de asistencia disponibles.</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

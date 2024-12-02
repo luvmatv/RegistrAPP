@@ -114,6 +114,10 @@ export class MainPage implements OnInit, AfterViewInit {
     this.navCtrl.navigateForward('/horario');
   }
 
+  goToRasistencia(){
+    this.navCtrl.navigateForward('/rasistencia');
+  }
+
   openSettingsMenu() {
     this.menu.open('settings-menu'); 
   }
