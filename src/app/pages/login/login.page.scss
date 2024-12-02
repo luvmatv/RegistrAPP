@@ -1,15 +1,13 @@
-// Fondo y estructura principal
 .custom-background { 
   display: flex;
   justify-content: center; 
   align-items: flex-start; 
   height: 100vh;
   padding-top: 20px; 
-  background-image: url('/assets/images/duocuc.png'); 
   background-size: cover; 
   background-position: center; 
   position: relative; 
-  filter: brightness(0.95); /* Oscurece ligeramente para mejor contraste */
+  filter: brightness(0.85); 
 }
 
 ion-content {
@@ -28,14 +26,13 @@ ion-content {
   width: 100%;
   max-width: 400px;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.95); /* Transparencia ligera */
+  background-color: rgba(255, 255, 255, 0.95);
   border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
   position: relative;  
   z-index: 1; 
 }
 
-// Estilo de inputs
 .custom-item {
   --background: #f2f2f2;
   --color: #2e2e2e;
@@ -45,7 +42,7 @@ ion-content {
 }
 
 .custom-label {
-  color: #0056a0; /* Azul institucional DUOC */
+  color: #a390d4; 
   font-weight: bold;
 }
 
@@ -53,18 +50,18 @@ ion-content {
   color: #2e2e2e;
 }
 
-// Mensaje de error
+
 .error-message {
-  color: #e63946; /* Rojo más vibrante */
+  color: #e63946; 
   margin-bottom: 10px;
   text-align: center;
   font-size: 14px;
 }
 
-// Botón principal
+
 .custom-button {
-  --background: #0056a0; /* Azul DUOC */
-  --background-hover: #007acc; /* Azul más claro */
+  --background: #a390d4; 
+  --background-hover: #a390d4; 
   --color: #fff;
   border-radius: 8px;
   margin-top: 15px;
@@ -75,9 +72,9 @@ ion-content {
 
 .custom-button:hover {
   transform: translateY(-2px);
+  --background: #a390d4; 
 }
 
-// Opciones de enlaces
 .login-options {
   display: flex;
   justify-content: space-between;
@@ -85,7 +82,7 @@ ion-content {
 }
 
 .custom-link {
-  --color: #0056a0;
+  --color: #a390d4; 
   font-weight: bold;
   text-transform: uppercase;
   font-size: 14px;
@@ -93,10 +90,10 @@ ion-content {
 }
 
 .custom-link:hover {
-  --color: #007acc;
+  --color: #a390d4; 
 }
 
-// Barra de herramientas
+
 .custom-toolbar {
   position: relative; 
   background-color: #ffffff; 
