@@ -65,16 +65,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/ver-solicitudes/ver-solicitudes.module').then( m => m.VerSolicitudesPageModule),
     canActivate: [AuthGuard]
   },
-
+  {
+    path: 'rasistencia',
+    loadChildren: () => import('./pages/rasistencia/rasistencia.module').then( m => m.RasistenciaPageModule),
+    canActivate: [AuthGuard]
+  },
   {
     path: '**',
     loadChildren: () => import('./pages/error404/error404.module').then(m => m.Error404PageModule)
-  },
-
-
- 
-
-  
+  }
 
 
 

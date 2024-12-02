@@ -55,7 +55,7 @@ export class PerfilPage implements OnInit {
     }
 
     const size = 100;
-    const color = '#4CAF50';
+    const color = '#a390d4';
     const textColor = 'white';
 
     canvas.width = size;
