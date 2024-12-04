@@ -12,12 +12,12 @@
     <ion-segment-button value="scan">
       <ion-label>Scanear QR</ion-label>
     </ion-segment-button>
-    <ion-segment-button value="generate">
+
+    <ion-segment-button *ngIf="isProfesor" value="generate">
       <ion-label>Generar QR</ion-label>
     </ion-segment-button>
   </ion-segment>
 
-  <!-- Contenido de escanear QR -->
   <div *ngIf="segment === 'scan'">
     <img src="assets/images/QR.png" alt="DUOC Logo" />
     <ion-button expand="block" (click)="startScan()">
@@ -25,7 +25,6 @@
       <ion-icon slot="end" name="scan-outline"></ion-icon>
     </ion-button>
 
-    <!-- Resultado del escaneo -->
     <ion-item *ngIf="scanResult">
       <ion-label>
         <p>Resultado del Escaneo:</p>
@@ -34,8 +33,7 @@
     </ion-item>
   </div>
 
-  <!-- Contenido de generar QR -->
-  <div *ngIf="segment === 'generate'">
+  <div *ngIf="segment === 'generate' && isProfesor">
     <div id="qrImage">
       <qr-code [value]="qrRedirectUrl" size="190" errorCorrectionLevel="M"></qr-code>
     </div>
