@@ -10,10 +10,10 @@ import { StorageService } from '../../services/storage.service';
   styleUrls: ['./qr.page.scss'],
 })
 export class QrPage implements OnInit {
-  segment = 'generate'; 
-  scanResult = ''; 
-
+  segment = 'scan';
+  scanResult = '';
   qrRedirectUrl = 'asistencia';
+  isProfesor: boolean = false;
 
   constructor(
     private modalController: ModalController,
@@ -31,6 +31,9 @@ export class QrPage implements OnInit {
         BarcodeScanner.removeAllListeners();
       }
     }
+
+    const userRole = await this.storageService.get('userRole');
+    this.isProfesor = userRole === 'profesor';
   }
 
   async startScan() {
@@ -61,7 +64,7 @@ export class QrPage implements OnInit {
       this.scanResult = scannedUrl;
 
       if (scannedUrl === this.qrRedirectUrl) {
-        this.navCtrl.navigateForward('/asistencia'); 
+        this.navCtrl.navigateForward('/asistencia');
       } else {
         const toast = await this.toastController.create({
           message: 'El QR escaneado no es válido para redirigir.',
