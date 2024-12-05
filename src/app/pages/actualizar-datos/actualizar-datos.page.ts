@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StorageService } from '../../services/storage.service';
-import { NavController, ToastController } from '@ionic/angular';
+import { NavController, ToastController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-actualizar-datos',
@@ -14,7 +14,8 @@ export class ActualizarDatosPage implements OnInit {
   constructor(
     private storageService: StorageService,
     private navCtrl: NavController,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private alertController: AlertController
   ) {}
 
   async ngOnInit() {
@@ -24,6 +25,30 @@ export class ActualizarDatosPage implements OnInit {
 
   goBack() {
     this.navCtrl.back();
+  }
+
+  async showConfirmation() {
+    const alert = await this.alertController.create({
+      header: 'Confirmar cambios',
+      message: '¿Está seguro de que desea guardar los cambios y cerrar sesión?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Operación cancelada');
+          },
+        },
+        {
+          text: 'Confirmar',
+          handler: async () => {
+            await this.saveChanges();
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   async saveChanges() {
