@@ -15,7 +15,7 @@
     <ion-card-content>
       <form [formGroup]="solicitudForm" (ngSubmit)="enviarSolicitud()">
         <ion-item>
-          <ion-label>Sede</ion-label>
+          <ion-label position="stacked">Sede</ion-label>
           <ion-select formControlName="sede" placeholder="Selecciona una sede">
             <ion-select-option value="san_joaquin">San Joaquín</ion-select-option>
             <ion-select-option value="antonio_varas">Antonio Varas</ion-select-option>
@@ -30,7 +30,7 @@
         </ion-note>
 
         <ion-item>
-          <ion-label>Categoría</ion-label>
+          <ion-label position="stacked">Categoría</ion-label>
           <ion-select formControlName="categoria" placeholder="Selecciona una categoría">
             <ion-select-option value="academico">Académico</ion-select-option>
             <ion-select-option value="financiamiento">Financiamiento</ion-select-option>
@@ -45,7 +45,7 @@
         </ion-note>
 
         <ion-item>
-          <ion-label>Servicio</ion-label>
+          <ion-label position="stacked">Servicio</ion-label>
           <ion-select formControlName="servicio" placeholder="Selecciona un servicio">
             <ion-select-option value="asuntos_estudiantiles">Asuntos Estudiantiles</ion-select-option>
             <ion-select-option value="pagos">Pagos</ion-select-option>
@@ -60,7 +60,7 @@
         </ion-note>
 
         <ion-item>
-          <ion-label position="floating">Comentarios</ion-label>
+          <ion-label position="stacked">Comentarios</ion-label>
           <ion-textarea
             formControlName="comentarios"
             placeholder="Escribe tus comentarios aquí"
